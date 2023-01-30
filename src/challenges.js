@@ -16,6 +16,21 @@ const footballPoints = (wins, ties) => (wins * 3) + ties;
 
 // Desafio 5 - Crie a função highestCount
 
+const highestCount = (array) => {
+  let result = {};
+  for (let i = 0; i < array.length; i += 1) {
+    result[array[i]] = 0;
+  }
+  for (let i = 0; i < array.length; i += 1) {
+    result[array[i]] += 1;
+  }
+  let value = Object.values(result).reduce((x, y) =>
+    (result[x] > result[y] ? x : y));
+  return parseInt(value, 0);
+
+  // https://stackoverflow.com/questions/27376295/getting-key-with-the-highest-value-from-object
+};
+
 // Desafio 6 - Crie as funções calcTriangleArea, calcRectangleArea e calcAllAreas
 
 // Desafio 7 - Crie a função catAndMouse
