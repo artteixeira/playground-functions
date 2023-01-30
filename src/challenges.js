@@ -19,9 +19,9 @@ const footballPoints = (wins, ties) => wins * 3 + ties;
 const highestCount = (array) => {
   let result = {};
   for (let i = 0; i < array.length; i += 1) {
-    result[array[i]] = 0;
-  }
-  for (let i = 0; i < array.length; i += 1) {
+    if (!result[array[i]]) {
+      result[array[i]] = 0;
+    }
     result[array[i]] += 1;
   }
   let value = Object.values(result).reduce((x, y) =>
@@ -48,13 +48,9 @@ const calcAllAreas = (base, height, form) => {
 
 // Desafio 7 - Crie a função catAndMouse
 
-// eslint-disable-next-line complexity
 const catAndMouse = (mouse, cat1, cat2) => {
-  let gatito1 = cat2 - mouse;
-  let gatito2 = cat1 - mouse;
-
-  gatito1 = gatito1 < 0 ? gatito1 * -1 : gatito1;
-  gatito2 = gatito2 < 0 ? gatito2 * -1 : gatito2;
+  let gatito1 = Math.abs(cat2 - mouse);
+  let gatito2 = Math.abs(cat1 - mouse);
 
   if (gatito1 === gatito2) {
     return 'os gatos trombam e o rato foge';
@@ -67,9 +63,94 @@ const catAndMouse = (mouse, cat1, cat2) => {
 
 // Desafio 8 - Crie a função fizzBuzz
 
+const fizzBuzz = (numbers) => {
+  let resultado = [];
+  for (let i = 0; i < numbers.length; i += 1) {
+    if (numbers[i] % 3 === 0 && numbers[i] % 5 !== 0) {
+      resultado.push('fizz');
+    } else if (numbers[i] % 3 !== 0 && numbers[i] % 5 === 0) {
+      resultado.push('buzz');
+    } else if (numbers[i] % 3 === 0 && numbers[i] % 5 === 0) {
+      resultado.push('fizzBuzz');
+    } else {
+      resultado.push('bug!');
+    }
+  }
+  return resultado;
+};
+
 // Desafio 9 - Crie a função encode e a função decode
 
+const encode = (string) => {
+  let resultado = '';
+
+  for (let i = 0; i < string.length; i += 1) {
+    switch (string[i]) {
+    case 'a':
+      resultado += 1;
+      break;
+    case 'e':
+      resultado += 2;
+      break;
+    case 'i':
+      resultado += 3;
+      break;
+    case 'o':
+      resultado += 4;
+      break;
+    case 'u':
+      resultado += 5;
+      break;
+    default:
+      resultado += string[i];
+      break;
+    }
+  }
+  return resultado;
+};
+
+const decode = (string) => {
+  let resultado = '';
+
+  for (let i = 0; i < string.length; i += 1) {
+    switch (string[i]) {
+    case '1':
+      resultado += 'a';
+      break;
+    case '2':
+      resultado += 'e';
+      break;
+    case '3':
+      resultado += 'i';
+      break;
+    case '4':
+      resultado += 'o';
+      break;
+    case '5':
+      resultado += 'u';
+      break;
+    default:
+      resultado += string[i];
+      break;
+    }
+  }
+  return resultado;
+};
+
 // Desafio 10 - Crie a função techList
+
+const techList = (tech, name) => {
+  let resultado = [];
+  tech.sort();
+
+  if (tech.length === 0) {
+    return resultado;
+  }
+  for (let i = 0; i < tech.length; i += 1) {
+    resultado.push({ tech: tech[i], name });
+  }
+  return resultado;
+};
 
 // Não modifique essas linhas
 module.exports = {
