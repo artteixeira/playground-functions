@@ -48,6 +48,23 @@ const calcAllAreas = (base, height, form) => {
 
 // Desafio 7 - Crie a função catAndMouse
 
+// eslint-disable-next-line complexity
+const catAndMouse = (mouse, cat1, cat2) => {
+  let gatito1 = cat2 - mouse;
+  let gatito2 = cat1 - mouse;
+
+  gatito1 = gatito1 < 0 ? gatito1 * -1 : gatito1;
+  gatito2 = gatito2 < 0 ? gatito2 * -1 : gatito2;
+
+  if (gatito1 === gatito2) {
+    return 'os gatos trombam e o rato foge';
+  } if (gatito1 < gatito2) {
+    return 'cat2';
+  } if (gatito2 < gatito1) {
+    return 'cat1';
+  }
+};
+
 // Desafio 8 - Crie a função fizzBuzz
 
 // Desafio 9 - Crie a função encode e a função decode
