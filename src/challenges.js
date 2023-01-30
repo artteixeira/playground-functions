@@ -8,6 +8,8 @@ const splitSentence = (string) => string.split(' ');
 
 // Desafio 3 - Crie a função concatName
 
+const concatName = (array) => `${array[array.length - 1]}, ${array[0]}`;
+
 // Desafio 4 - Crie a função footballPoints
 
 // Desafio 5 - Crie a função highestCount
