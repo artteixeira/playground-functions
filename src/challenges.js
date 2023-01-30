@@ -12,7 +12,7 @@ const concatName = (array) => `${array[array.length - 1]}, ${array[0]}`;
 
 // Desafio 4 - Crie a função footballPoints
 
-const footballPoints = (wins, ties) => (wins * 3) + ties;
+const footballPoints = (wins, ties) => wins * 3 + ties;
 
 // Desafio 5 - Crie a função highestCount
 
@@ -32,6 +32,19 @@ const highestCount = (array) => {
 };
 
 // Desafio 6 - Crie as funções calcTriangleArea, calcRectangleArea e calcAllAreas
+
+const calcTriangleArea = (base, height) => (base * height) / 2;
+
+const calcRectangleArea = (base, height) => base * height;
+
+const calcAllAreas = (base, height, form) => {
+  if (form === 'triângulo') {
+    return `O valor da área do triângulo é de: ${calcTriangleArea(base, height)}`;
+  } if (form === 'retângulo') {
+    return `O valor da área do retângulo é de: ${calcRectangleArea(base, height)}`;
+  }
+  return 'Não foi possível fazer o cálculo, insira uma forma geométrica válida';
+};
 
 // Desafio 7 - Crie a função catAndMouse
 
