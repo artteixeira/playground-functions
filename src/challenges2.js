@@ -1,30 +1,27 @@
 // Desafio 11 - Crie a função generatePhoneNumber
 
-const verifyQtyNumber = (arr) => {
-  let qty = 0;
-  for (let i = 0; i < arr.length; i += 1) {
-    let numApp = 1;
-    for (let j = i + 1; j < arr.length; j += 1) {
-      if (arr[i] === arr[j]) {
-        numApp += 1;
-      }
-      if (numApp > qty) {
-        qty = numApp;
-      }
-    }
-  }
-  return qty;
+const highValue = (result) => {
+  let z = Object.values(result);
+  let x = z.reduce(function (a, b) {
+    return Math.max(a, b);
+  });
+  return x;
 };
 
-const generatePhoneNumber = (phone) => {
-  if (phone.length !== 11) {
-    return 'Array com tamanho incorreto.';
-  }
-  for (let i = 0; i < phone.length; i += 1) {
-    if (phone[i] < 0 || phone[i] > 9 || verifyQtyNumber(phone) >= 3) {
-      return 'não é possível gerar um número de telefone com esses valores';
+const highestCount = (array) => {
+  let result = {};
+  for (let i = 0; i < array.length; i += 1) {
+    if (!result[array[i]]) {
+      result[array[i]] = 0;
     }
+    result[array[i]] += 1;
   }
+  return highValue(result);
+
+  // https://stackoverflow.com/questions/27376295/getting-key-with-the-highest-value-from-object
+};
+
+const generateNumber = (phone) => {
   let fPart = '(';
   let sPart = '';
   let tPart = '';
@@ -40,6 +37,21 @@ const generatePhoneNumber = (phone) => {
     tPart += phone[i];
   }
   return `${fPart}${sPart}${tPart}`;
+};
+
+const valida = (phone, i) => phone[i] < 0 || phone[i] > 9 || highestCount(phone) >= 3;
+
+const generatePhoneNumber = (phone) => {
+  if (phone.length !== 11) {
+    return 'Array com tamanho incorreto.';
+  }
+
+  for (let i = 0; i < phone.length; i += 1) {
+    if (valida(phone, i)) {
+      return 'não é possível gerar um número de telefone com esses valores';
+    }
+  }
+  return generateNumber(phone);
 };
 
 // Desafio 12 -  Crie a função triangleCheck
