@@ -44,8 +44,10 @@ const generatePhoneNumber = (phone) => {
 
 // Desafio 12 -  Crie a função triangleCheck
 
+const verifyTriangle = (x, y, z) => (x > y + z || y > x + z || z > x + y);
+
 const triangleCheck = (lineA, lineB, lineC) => {
-  if (lineA > lineB + lineC || lineB > lineA + lineC || lineC > lineA + lineB) {
+  if (verifyTriangle(lineA, lineB, lineC)) {
     return false;
   } if (
     lineA > Math.abs(lineB) - Math.abs(lineC)
@@ -59,7 +61,7 @@ const triangleCheck = (lineA, lineB, lineC) => {
 // Desafio 13 - Crie a função hydrate
 
 const hydrate = (string) => {
-  let numbers = string.match(/\d+/g).reduce((x, y) => parseInt(x, 0) + parseInt(y, 0));
+  let numbers = string.match(/\d+/g).reduce((x, y) => parseInt(x, 0) + parseInt(y, 0)); // https://stackoverflow.com/questions/1623221/how-to-find-a-number-in-a-string-using-javascript
 
   if (numbers > 1) {
     return `${numbers} copos de água`;
