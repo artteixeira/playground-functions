@@ -16,6 +16,12 @@ const footballPoints = (wins, ties) => wins * 3 + ties;
 
 // Desafio 5 - Crie a função highestCount
 
+const highValue = (result) => {
+  let z = Object.values(result).reduce((x, y) =>
+    (result[x] > result[y] ? x : y));
+  return parseInt(z, 0);
+};
+
 const highestCount = (array) => {
   let result = {};
   for (let i = 0; i < array.length; i += 1) {
@@ -24,9 +30,7 @@ const highestCount = (array) => {
     }
     result[array[i]] += 1;
   }
-  let value = Object.values(result).reduce((x, y) =>
-    (result[x] > result[y] ? x : y));
-  return parseInt(value, 0);
+  return highValue(result);
 
   // https://stackoverflow.com/questions/27376295/getting-key-with-the-highest-value-from-object
 };
@@ -63,19 +67,28 @@ const catAndMouse = (mouse, cat1, cat2) => {
 
 // Desafio 8 - Crie a função fizzBuzz
 
-const fizzBuzz = (numbers) => {
-  let resultado = [];
-  for (let i = 0; i < numbers.length; i += 1) {
-    if (numbers[i] % 3 === 0 && numbers[i] % 5 !== 0) {
-      resultado.push('fizz');
-    } else if (numbers[i] % 3 !== 0 && numbers[i] % 5 === 0) {
-      resultado.push('buzz');
-    } else if (numbers[i] % 3 === 0 && numbers[i] % 5 === 0) {
-      resultado.push('fizzBuzz');
-    } else {
-      resultado.push('bug!');
-    }
+const div3 = (number) => number % 3 === 0;
+const div5 = (number) => number % 5 === 0;
+const div3e5 = (number) => div5(number) && div3(number);
+const bug = (number) => number % 3 !== 0 && number % 5 !== 0;
+const verificaBuzz = (array, i) => {
+  if (bug(array[i])) {
+    return 'bug!';
+  } if (div3e5(array[i])) {
+    return 'fizzBuzz';
+  } if (div5(array[i])) {
+    return 'buzz';
   }
+  return 'fizz';
+};
+
+const fizzBuzz = (array) => {
+  let resultado = [];
+
+  for (let i = 0; i < array.length; i += 1) {
+    resultado.push(verificaBuzz(array, i));
+  }
+
   return resultado;
 };
 
