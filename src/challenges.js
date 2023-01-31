@@ -96,27 +96,18 @@ const fizzBuzz = (array) => {
 
 const encode = (string) => {
   let resultado = '';
-
-  for (let i = 0; i < string.length; i += 1) {
-    switch (string[i]) {
-    case 'a':
-      resultado += 1;
-      break;
-    case 'e':
-      resultado += 2;
-      break;
-    case 'i':
-      resultado += 3;
-      break;
-    case 'o':
-      resultado += 4;
-      break;
-    case 'u':
-      resultado += 5;
-      break;
-    default:
-      resultado += string[i];
-      break;
+  let object = {
+    a: '1',
+    e: '2',
+    i: '3',
+    o: '4',
+    u: '5',
+  };
+  for (let i of string) {
+    if (Object.prototype.hasOwnProperty.call(object, i)) {
+      resultado += object[i];
+    } else {
+      resultado += i;
     }
   }
   return resultado;
@@ -124,27 +115,18 @@ const encode = (string) => {
 
 const decode = (string) => {
   let resultado = '';
-
-  for (let i = 0; i < string.length; i += 1) {
-    switch (string[i]) {
-    case '1':
-      resultado += 'a';
-      break;
-    case '2':
-      resultado += 'e';
-      break;
-    case '3':
-      resultado += 'i';
-      break;
-    case '4':
-      resultado += 'o';
-      break;
-    case '5':
-      resultado += 'u';
-      break;
-    default:
-      resultado += string[i];
-      break;
+  let object = {
+    1: 'a',
+    2: 'e',
+    3: 'i',
+    4: 'o',
+    5: 'u',
+  };
+  for (let i of string) {
+    if (Object.prototype.hasOwnProperty.call(object, i)) {
+      resultado += object[i];
+    } else {
+      resultado += i;
     }
   }
   return resultado;

@@ -59,16 +59,12 @@ const triangleCheck = (lineA, lineB, lineC) => {
 // Desafio 13 - Crie a função hydrate
 
 const hydrate = (string) => {
-  let numbers = string.split(' ');
-  let result = 0;
-  for (let i = 0; i < string.length; i += 1) {
-    result += numbers[i];
-  }
+  let numbers = string.match(/\d+/g).reduce((x, y) => parseInt(x, 0) + parseInt(y, 0));
 
-  if (result > 1) {
-    return `${result} copos de água`;
+  if (numbers > 1) {
+    return `${numbers} copos de água`;
   }
-  return `${result} copo de água`;
+  return `${numbers} copo de água`;
 };
 
 // Não modifique essas linhas
